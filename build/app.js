@@ -45,7 +45,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var component = __webpack_require__(1);
-	console.log(component)
+
 	document.body.appendChild(component());
 
 
@@ -54,10 +54,10 @@
 /***/ function(module, exports) {
 
 	module.exports = function() {
-	  var element = document.createElement('h2');
+	  var element = document.createElement('h1');
 
 	  element.innerHTML = 'Hello World!';
-	  console.log(element.innerHTML = 'Hello World!');
+
 	  return element;
 	};
 
