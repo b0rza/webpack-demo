@@ -1,8 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
+
 const parts = require('./libs/parts');
 
 const PATHS = {
@@ -31,7 +31,10 @@ var config;
 
 switch(process.env.npm_lifecycle_event) {
   case 'build':
-    config = merge(common, {});
+    config = merge(
+      common,
+      parts.setupCSS(PATHS.app)
+    );
     break;
   default:
     config = merge(
@@ -39,7 +42,8 @@ switch(process.env.npm_lifecycle_event) {
       parts.devServer({
         host: process.env.HOST,
         port: process.env.PORT
-      })
+      }),
+      parts.setupCSS(PATHS.app)
     );
 }
 
